@@ -10,4 +10,10 @@
         name: nginx
         state:  present
 
+    - name: Move default template to servers
+      copy:
+        src:  ./default
+        dest: /etc/nginx/sites-available/default
+
+      
     
