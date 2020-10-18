@@ -45,3 +45,30 @@
       service:
         name: haproxy
         state:  restarted
+
+    - name: Testing the deployed application 
+      command:  curl "{{hostvars.devhaproxy.ansible_default_ipv4.address}}"
+      args:
+        warn: no
+      register: test
+
+    - debug:
+        msg:  "{{test.stdout}}"
+
+    - name: Testing the deployed application 
+      command:  curl "{{hostvars.devhaproxy.ansible_default_ipv4.address}}"
+      args:
+        warn: no
+      register: test
+
+    - debug:
+        msg:  "{{test.stdout}}"
+
+    - name: Testing the deployed application 
+      command:  curl "{{hostvars.devhaproxy.ansible_default_ipv4.address}}"
+      args:
+        warn: no
+      register: test
+
+    - debug:
+        msg:  "{{test.stdout}}"
