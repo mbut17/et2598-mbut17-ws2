@@ -36,9 +36,12 @@
         name: haproxy
         state:  present
 
-    
+    - name: Move haproxy template to load balancers
+      template:
+        src:  haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
 
-
-
-      
-    
+    - name: Restart the haproxy server
+      service:
+        name: haproxy
+        state:  restarted
