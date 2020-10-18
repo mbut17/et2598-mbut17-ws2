@@ -1,6 +1,7 @@
 ---
 
 - hosts:  webservers
+  become: yes
 
   tasks:
 
@@ -26,13 +27,17 @@
         dest: /var/www/html/index.php
 
 - hosts:  haproxy
-  
-  task:
+  become: yes
+
+  tasks:
     - name: Install haproxy on devhaproxy
       apt:
         update_cache: yes
         name: haproxy
         state:  present
+
+    
+
 
 
       
