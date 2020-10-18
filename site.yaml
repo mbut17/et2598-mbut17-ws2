@@ -19,6 +19,11 @@
       service:
         name: nginx
         state:  restarted
-
+    
+    - name: Move index page to target servers
+      copy:
+        src:  ./index.php
+        dest: /var/www/html/index.php
+      
       
     
