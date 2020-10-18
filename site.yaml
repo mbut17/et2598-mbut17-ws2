@@ -24,6 +24,16 @@
       copy:
         src:  ./index.php
         dest: /var/www/html/index.php
-      
+
+- hosts:  haproxy
+  
+  task:
+    - name: Install haproxy on devhaproxy
+      apt:
+        update_cache: yes
+        name: haproxy
+        state:  present
+
+
       
     
