@@ -1,12 +1,13 @@
 frontend http-in
+    bind *:80
     mode http
     default_backend backend_servers
-    listen client 5s
+    timeout client 5s
 
-backend backend_servers
-    bind *:80
-    listen connect 5s
-    listen server 5s
+backend backend_servers 
+    mode http
+    timeout connect 5s
+    timeout server 5s
 {% for server in groups['webservers']%}
-    server {{hostvars.server.inventory_hostname}} {{hostvars.server.ansible_default_ipv4.address}}:80 check
+    server {{hostvars[server].inventory_hostname}} {{hostvars[server].ansible_default_ipv4.address}}:80 check
 {% endfor %}
