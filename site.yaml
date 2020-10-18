@@ -1,0 +1,13 @@
+---
+
+- hosts:  webservers
+
+  tasks:
+
+    - name: Install nginx servers
+      apt:
+        update_cache: yes
+        name: nginx
+        state:  present
+
+    
